@@ -46,7 +46,7 @@ const containerStyles = {
       </div>
 
       {/* Main Header */}
-      <header className="w-full bg-white shadow fixed top-[40px] left-0 z-50"> {/* Adjusted for notification bar height */}
+      <header className="w-full bg-white shadow fixed top-[40px] left-0 z-50">
         {/* Main header */}
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -161,7 +161,7 @@ const containerStyles = {
             </nav>
           </div>
         )}
-        <div className="slider" style={containerStyles}>
+        <div className="flex-grow" style={containerStyles}>
                 <Slider slides={slides} />
             </div>
       </header>
@@ -172,64 +172,4 @@ const containerStyles = {
 export default Header;
 
 
-/*function Header() {
 
-    const icons = {
-        img: '/icon/search.png',
-    }
-
-    const slides = [
-        { url: '/resimler/ceket.jpg' },
-        { url: '/resimler/ceket2.jpg' }
-    ];
-
-    const containerStyles = {
-        width: '500px',
-        height: '280px',
-        margin: '0 auto',
-        marginTop: '10px',
-    };
-
-    return (
-        <div className="header">
-            <div className="w-full fixed top-0 left-0 bg-[#FAFAFA] z-50 shadow-md">
-                <nav className="py-2 flex flex-col sm:flex-row items-center sm:items-start justify-between sm:justify-between">
-                    <div className="sm:flex sm:items-center sm:space-x-4 sm:order-1">
-                        <h2 className="text-2xl font-bold">Bandage</h2>
-                    </div>
-                    <ul className="flex flex-col text-center sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 sm:order-2">
-                        <li className='list-none flex-1 text-center sm:inline-block'>
-                            <a href="#" className="text-black font-bold sm:text-start">Home</a>
-                        </li>
-                        <li className='list-none flex-1 text-start sm:inline-block'>
-                            <Shop />
-                        </li>
-                        <li className='list-none flex-1 text-start sm:inline-block'> 
-                            <a href="#" className="text-black font-bold">About</a>
-                        </li>
-                        <li className='list-none flex-1 text-start sm:inline-block'>
-                            <a href="#" className="text-black font-bold">Blog</a>
-                        </li>
-                        <li className='list-none flex-1 text-start sm:inline-block'>
-                            <a href="#" className="text-black font-bold">Contacts</a>
-                        </li>
-                        <li className='list-none flex-1 text-start sm:inline-block'> 
-                            <a href="#" className="text-black font-bold">Pages</a>
-                        </li>
-                    </ul>
-                    <div className="sm:order-3 sm:ml-auto mt-2 sm:mt-0">
-                        <a href="#" className='text-[#23A6F0]'>Log in/Register</a>
-                    </div>
-                    <div className="sm:order-4 mt-2 sm:mt-0">
-                        <img src={icons.img} alt="icon" className='w-6 h-6'/>
-                    </div>
-                </nav>
-            </div>
-            <div className="slider" style={containerStyles}>
-                <Slider slides={slides} />
-            </div>
-        </div>
-    )
-}
-
-export default Header;*/

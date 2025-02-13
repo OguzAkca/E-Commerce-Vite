@@ -7,6 +7,7 @@ function Slider({ slides }) {
         height: '100%',
         position: 'relative',
         
+        
     };
 
     const slideStyles = {
