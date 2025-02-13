@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Search, ShoppingCart, User, Heart } from 'lucide-react';
-import NotificationBar from '../../topSide';
+import NotificationBar from './topSide';
+import Slider from '../../Slider/Slider';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +25,18 @@ const Header = () => {
         items: ["Bags", "Belts", "Cosmetic", "Hats"]
     }
   ];
+
+  const slides = [
+    { url: '/resimler/ceket.jpg' },
+    { url: '/resimler/ceket2.jpg' }
+];
+
+const containerStyles = {
+    width: '500px',
+    height: '280px',
+    margin: '0 auto',
+    marginTop: '10px',
+};
 
   return (
     <>
@@ -148,6 +161,9 @@ const Header = () => {
             </nav>
           </div>
         )}
+        <div className="slider" style={containerStyles}>
+                <Slider slides={slides} />
+            </div>
       </header>
     </>
   );

@@ -6,6 +6,7 @@ function Slider({ slides }) {
     const sliderStyles = {
         height: '100%',
         position: 'relative',
+        
     };
 
     const slideStyles = {
@@ -14,7 +15,7 @@ function Slider({ slides }) {
         borderRadius: '10px',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        backgroundImage: `url(${slides[current].url})`, // burada hatayı düzelttik
+        backgroundImage: `url(${slides[current].url})`, 
     };
 
     const leftArrowStyles = {
@@ -25,6 +26,7 @@ function Slider({ slides }) {
         fontSize: '45px',
         cursor: 'pointer',
         zIndex: 1,
+        color: 'white'
     };
     const rightArrowStyles = {
         position: 'absolute',
@@ -72,7 +74,7 @@ function Slider({ slides }) {
             <div style={rightArrowStyles} onClick={goToNext}><ChevronRight/></div>
             <div style={recContainerStyles}>
                 {slides.map((slide, slideIndex) => (
-                    <div key={slideIndex} style={recStyle} onClick={() => goToSlide(slideIndex)}><RectangleHorizontal/></div>
+                    <div className='relative top-[-45px] color-[white]' key={slideIndex} style={recStyle} onClick={() => goToSlide(slideIndex)}><RectangleHorizontal/></div>
                 ))}
             </div>
         </div>
