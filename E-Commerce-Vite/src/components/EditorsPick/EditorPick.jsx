@@ -23,25 +23,25 @@ const EditorsPicks = () => {
     {
       id: 1,
       title: "MEN",
-      imageUrl: "/api/placeholder/600/800",
+      imageUrl: "/resimler/man-card.jpg",
       isLarge: true
     },
     {
       id: 2,
       title: "WOMEN",
-      imageUrl: "/api/placeholder/400/500",
+      imageUrl: "/resimler/woman-card.png",
       isLarge: false
     },
     {
       id: 3,
       title: "ACCESSORIES",
-      imageUrl: "/api/placeholder/400/250",
+      imageUrl: "/resimler/acce-card.png",
       isLarge: false
     },
     {
       id: 4,
       title: "KIDS",
-      imageUrl: "/api/placeholder/400/250",
+      imageUrl: "/resimler/kid-card.png",
       isLarge: false
     }
   ];
@@ -58,7 +58,7 @@ const EditorsPicks = () => {
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
           {/* Left side - Large Image */}
-          <div className="h-[700px] sm:h-[500px] md:h-[600px]">
+          <div className="h-[400px] sm:h-[500px] md:h-[600px]">
             <CategoryCard
               key={categories[0].id}
               title={categories[0].title}

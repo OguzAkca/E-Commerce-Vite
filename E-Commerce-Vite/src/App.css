@@ -5,13 +5,24 @@
   text-align: center;
 }
 
-footer {
-  position: fixed; /* Sayfa kaydırılsa bile konumu sabit tutar */
-  bottom: 0; /* Sayfanın altına hizala */
-  left: 0;
-  width: 100%; /* Tam genişlikte */
-  background-color: #fff;
-  padding: 10px;
-  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+
+.header {
+  margin-bottom: 20px; /* Header ve Page arasına boşluk ekler */
 }
 
+.page {
+  margin-bottom: 20px; /* Page ve EditorsPicks arasına boşluk ekler */
+}
+
+.editors-picks {
+  margin-top: 20px; /* EditorsPicks ile önceki eleman arasında boşluk */
+}
+.container {
+  display: flex;
+  flex-direction: column; /* Elemanları dikey sıraya diziyor */
+  gap: 20px; /* Elemanlar arasındaki boşluk */
+}
+
+.relative {
+  position: relative; /* İstediğiniz pozisyonlandırmayı sağlar */
+}

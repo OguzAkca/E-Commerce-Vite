@@ -29,10 +29,10 @@ const ShopPage = () => {
   const products = [
     {
       id: 1,
-      title: "Graphic Design",
+      title: "Graphic Designatata",
       subtitle: "English Department",
       price: "54.51",
-      imageUrl: "/api/placeholder/300/400",
+      imageUrl: "/ShopCovers/cover-1.png",
       colors: ['#FFD700', '#FF69B4', '#4169E1', '#32CD32']
     },
     {
@@ -40,7 +40,7 @@ const ShopPage = () => {
       title: "Graphic Design",
       subtitle: "English Department",
       price: "34.21",
-      imageUrl: "/api/placeholder/300/400",
+      imageUrl: "/ShopCovers/cover-2.png",
       colors: ['#87CEEB', '#DDA0DD', '#F0E68C']
     },
     {
@@ -48,7 +48,7 @@ const ShopPage = () => {
       title: "Graphic Design",
       subtitle: "English Department",
       price: "49.99",
-      imageUrl: "/api/placeholder/300/400",
+      imageUrl: "/ShopCovers/cover-3.png",
       colors: ['#98FB98', '#DEB887', '#BA55D3']
     },
     {
@@ -56,7 +56,7 @@ const ShopPage = () => {
       title: "Graphic Design",
       subtitle: "English Department",
       price: "45.51",
-      imageUrl: "/api/placeholder/300/400",
+      imageUrl: "/ShopCovers/cover-4.png",
       colors: ['#FF6347', '#20B2AA', '#DAA520', '#FF69B4']
     },
     {
@@ -64,7 +64,7 @@ const ShopPage = () => {
       title: "Graphic Design",
       subtitle: "English Department",
       price: "65.99",
-      imageUrl: "/api/placeholder/300/400",
+      imageUrl: "/ShopCovers/cover-5.png",
       colors: ['#FF4500', '#4682B4', '#32CD32', '#FFD700']
     },
     {
@@ -72,7 +72,7 @@ const ShopPage = () => {
       title: "Graphic Design",
       subtitle: "English Department",
       price: "58.48",
-      imageUrl: "/api/placeholder/300/400",
+      imageUrl: "/ShopCovers/cover-6.png",
       colors: ['#FF69B4', '#4169E1', '#32CD32', '#FFD700']
     },
     {
@@ -80,7 +80,7 @@ const ShopPage = () => {
       title: "Graphic Design",
       subtitle: "English Department",
       price: "44.99",
-      imageUrl: "/api/placeholder/300/400",
+      imageUrl: "/ShopCovers/cover-7.png",
       colors: ['#DDA0DD', '#F0E68C', '#98FB98']
     },
     {
@@ -88,7 +88,7 @@ const ShopPage = () => {
       title: "Graphic Design",
       subtitle: "English Department",
       price: "62.51",
-      imageUrl: "/api/placeholder/300/400",
+      imageUrl: "/ShopCovers/cover-8.png",
       colors: ['#FF6347', '#4682B4', '#FFD700', '#32CD32']
     },
   ];
@@ -102,7 +102,7 @@ const ShopPage = () => {
           <p className="text-gray-600">Problems trying to resolve the conflict between</p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid text-black grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
             <ProductCard
               key={product.id}
