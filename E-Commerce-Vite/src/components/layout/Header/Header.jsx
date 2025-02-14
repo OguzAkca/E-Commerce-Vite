@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { Menu, X, Search, ShoppingCart, User, Heart } from 'lucide-react';
 import NotificationBar from './topSide';
 import Slider from '../../Slider/Slider';
+import { useHistory } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
+
+  const handleNavigation = useHistory()
 
   const menuItems = [
     { title: 'Home', href: '/' },
@@ -161,9 +164,7 @@ const containerStyles = {
             </nav>
           </div>
         )}
-        <div className="flex-grow" style={containerStyles}>
-                <Slider slides={slides} />
-            </div>
+        
       </header>
     </>
   );
@@ -173,3 +174,6 @@ export default Header;
 
 
 
+/*<div className="flex-grow" style={containerStyles}>
+                <Slider slides={slides} />
+            </div>*/

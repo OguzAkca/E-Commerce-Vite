@@ -33,6 +33,13 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 
 h1 {
   font-size: 3.2em;
