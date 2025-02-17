@@ -10,7 +10,7 @@ const ProductCard = ({ title, price, imageUrl, colors }) => (
       />
     </div>
     <div className="p-4 space-y-2">
-      <h3 className="text-sm font-medium text-gray-700">{title}</h3>
+      <h3 className="text-sm font-medium text-gray-700">{title} </h3>
       <p className="text-sm text-gray-600">${price}</p>
       <div className="flex gap-1">
         {colors.map((color, index) => (

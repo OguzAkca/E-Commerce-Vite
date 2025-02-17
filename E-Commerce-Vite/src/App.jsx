@@ -1,11 +1,10 @@
 
 import './App.css'
-import Header from './components/layout/Header/Header'
-
-import EditorsPicks from './components/EditorsPick/EditorPick'
-import { Page } from './components/Slider/SliderUse';
 import ShopPage from './components/ShopPage/ShopPage';
-import Footer from './components/layout/Footer';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import HomePage from './components/Pages/HomePage';
+import ProductDetailPage from './components/Pages/ProductDetail/ProductDetailPage';
+
 
 
 
@@ -13,18 +12,16 @@ function App() {
   
 
   return (
-    <div className="container">
-      <Header />
-      <Page />
-      <div className="relative z-20">
-        <EditorsPicks />
-      </div>
-      <ShopPage/>
-      
-    <Footer/>
+    <Router>
+      <Switch>
+        <Route exact path ='/' component={HomePage}/>
+        <Route path='/shop' component={ShopPage}/>
+        <Route path='/about' component={ProductDetailPage}/>
+
+        
+      </Switch>
+    </Router>
     
-  
-    </div>
     
   );
   
@@ -33,16 +30,3 @@ function App() {
 
 export default App
 
-/* <header className="sticky top-0 z-10">
-    <Header/>
-    </header>
-    
-  
-      
-    
-    
-      
-      
-      <footer>
-      <Footer/>
-      </footer> */
