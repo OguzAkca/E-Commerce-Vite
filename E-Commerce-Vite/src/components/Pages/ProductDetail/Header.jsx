@@ -17,7 +17,7 @@ const ProductDisplay = () => {
   ];
 
   return (
-    <div className="w-full max-w-md md:max-w-6xl mx-auto">
+    <div className="w-full max-w-md md:max-w-6xl  ">
       <div className="flex flex-col md:flex-row md:gap-8">
         {/* Product Image Section */}
         <div className="w-full md:w-1/2 relative mb-4 md:mb-0">
