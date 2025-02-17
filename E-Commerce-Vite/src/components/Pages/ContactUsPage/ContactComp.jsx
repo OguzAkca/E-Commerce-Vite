@@ -47,7 +47,7 @@ function ContactUs() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Column */}
             <div className="text-white">
-              <h1 className="text-4xl font-bold mb-6 py-4 ">CONTACT US</h1>
+              <h1 className="text-4xl font-bold mb-6 py-4ve ">CONTACT US</h1>
               <p className="text-gray-200 mb-8">
                 Problems trying to resolve the conflict between <br />
                 the two major realms of Classical physics: <br />
