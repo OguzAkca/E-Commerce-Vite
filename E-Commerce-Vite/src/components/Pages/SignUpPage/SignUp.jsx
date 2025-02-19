@@ -28,6 +28,7 @@ function SignupPage() {
   })
 
   const selectedRole = watch("role_id")
+  const password = watch("password")
 
   useEffect(() => {
     const fetchRoles = async () => {
@@ -47,8 +48,11 @@ function SignupPage() {
     setIsLoading(true)
     setError(null)
 
+    // Remove confirmPassword from data before sending to API
+    const { confirmPassword, ...apiData } = data
+
     try {
-      await api.post("/signup", data)
+      await api.post("/signup", apiData)
       history.goBack()
       alert("You need to click the link in your email to activate your account!")
     } catch (error) {
@@ -123,6 +127,21 @@ function SignupPage() {
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
           {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+            Confirm Password
+          </label>
+          <input
+            id="confirmPassword"
+            type="password"
+            {...register("confirmPassword", {
+              validate: (value) => value === password || "The passwords do not match",
+            })}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+          {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>}
         </div>
 
         <div>
