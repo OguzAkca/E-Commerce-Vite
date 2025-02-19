@@ -1,10 +1,14 @@
 import React from 'react'
 import 'boxicons'
 import './Login.css'
+import { useHistory } from 'react-router-dom';
 
 function LoginPage() {
+
+    const history = useHistory();
+
   return (
-    <body className="body">
+    <div className="body">
         
     
     <div className='wrapper'>
@@ -28,14 +32,14 @@ function LoginPage() {
             <button className='btn' type='submit'>Login</button>
             <div className='register-link'>
                 <p>Hesabınız yok mu?
-                    <a href="#">Kayıt Ol</a>
+                    <a href="#" onClick={() => history.push('/signup')}>Kayıt Ol</a>
                 </p>
             </div>
             
             
         </form>
     </div>
-    </body>
+    </div>
     
   )
 }
