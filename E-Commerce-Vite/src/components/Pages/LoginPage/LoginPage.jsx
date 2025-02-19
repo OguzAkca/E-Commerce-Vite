@@ -26,11 +26,21 @@ function LoginPage() {
     setError(null)
 
     try {
-      const response = await api.post("/login", data)
-      // Assuming the API returns a token or user data
-      // You might want to store this in localStorage or a global state management solution
-      console.log("Login successful", response.data)
-      history.push("/dashboard") // Redirect to dashboard or home page after successful login
+      const response = await api.post("/login", {
+        email: data.email,
+        password: data.password,
+      })
+
+      // Assuming the API returns user data including the name
+      const userData = response.data
+
+      if (data.rememberMe) {
+        localStorage.setItem("user", JSON.stringify(userData))
+      } else {
+        sessionStorage.setItem("user", JSON.stringify(userData))
+      }
+
+      history.push("/")
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         setError(error.response.data.message || "An error occurred during login.")
@@ -84,6 +94,18 @@ function LoginPage() {
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
           {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+        </div>
+
+        <div className="flex items-center">
+          <input
+            id="rememberMe"
+            type="checkbox"
+            {...register("rememberMe")}
+            className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+          />
+          <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-900">
+            Remember me
+          </label>
         </div>
 
         <button
