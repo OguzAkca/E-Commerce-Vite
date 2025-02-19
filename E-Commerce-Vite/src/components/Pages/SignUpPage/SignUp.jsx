@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+"use client"
+
+import { useState, useEffect } from "react"
+import { useForm } from "react-hook-form"
+import { useHistory } from "react-router-dom"
+import axios from "axios"
 
 // Create Axios instance
 const api = axios.create({
-  baseURL: "https://workintech-fe-ecommerce.onrender.com/",
-});
+  baseURL: "https://workintech-fe-ecommerce.onrender.com",
+})
 
 function SignupPage() {
-  const [roles, setRoles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const history = useHistory();
+  const [roles, setRoles] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const history = useHistory()
 
   const {
     register,
@@ -23,44 +25,43 @@ function SignupPage() {
     defaultValues: {
       role_id: "1", // Default to Customer
     },
-  });
+  })
 
-  const selectedRole = watch("role_id");
+  const selectedRole = watch("role_id")
 
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const response = await api.get("/roles");
-        setRoles(response.data);
+        const response = await api.get("/roles")
+        setRoles(response.data)
       } catch (error) {
-        console.error("Error fetching roles:", error);
-        setError("Failed to fetch roles. Please try again later.");
+        console.error("Error fetching roles:", error)
+        setError("Failed to fetch roles. Please try again later.")
       }
-    };
+    }
 
-    fetchRoles();
-  }, []);
+    fetchRoles()
+  }, [])
 
   const onSubmit = async (data) => {
-    setIsLoading(true);
-    setError(null);
+    setIsLoading(true)
+    setError(null)
 
     try {
-        console.log("Gönderilen veri:", data); // Veriyi kontrol etmek için log ekleyin
-        await api.post("/signup", data);
-        history.goBack(); // navigate(-1) yerine
-        alert("Hesabınızı aktif hale getirmek için e-postadaki bağlantıya tıklamanız gerekmektedir!");
-      } catch (error) {
-        console.error("Kayıt hatası:", error); // Hata detayını loglayın
-        if (axios.isAxiosError(error) && error.response) {
-          setError(error.response.data.message || "Kayıt sırasında bir hata oluştu.");
-        } else {
-          setError("Beklenmedik bir hata oluştu. Lütfen tekrar deneyin.");
-        }
-      } finally {
-        setIsLoading(false);
+      await api.post("/signup", data)
+      history.goBack()
+      alert("You need to click the link in your email to activate your account!")
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        setError(error.response.data.message || "An error occurred during signup.")
+      } else {
+        setError("An unexpected error occurred. Please try again.")
       }
-    };
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-6">Sign Up</h1>
@@ -71,7 +72,9 @@ function SignupPage() {
       )}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            Name
+          </label>
           <input
             id="name"
             {...register("name", {
@@ -84,7 +87,9 @@ function SignupPage() {
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            Email
+          </label>
           <input
             id="email"
             type="email"
@@ -101,7 +106,9 @@ function SignupPage() {
         </div>
 
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            Password
+          </label>
           <input
             id="password"
             type="password"
@@ -110,8 +117,7 @@ function SignupPage() {
               minLength: { value: 8, message: "Password must be at least 8 characters" },
               pattern: {
                 value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).*$/,
-                message:
-                  "Password must include numbers, lowercase, uppercase, and special characters",
+                message: "Password must include numbers, lowercase, uppercase, and special characters",
               },
             })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -120,22 +126,9 @@ function SignupPage() {
         </div>
 
         <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
-          <input
-            id="confirmPassword"
-            type="password"
-            {...register("confirmPassword", {
-              validate: (value) => value === watch("password") || "Passwords do not match",
-            })}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          />
-          {errors.confirmPassword && (
-            <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="role" className="block text-sm font-medium text-gray-700">Role</label>
+          <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+            Role
+          </label>
           <select
             id="role"
             {...register("role_id")}
@@ -152,7 +145,9 @@ function SignupPage() {
         {selectedRole === "2" && (
           <>
             <div>
-              <label htmlFor="storeName" className="block text-sm font-medium text-gray-700">Store Name</label>
+              <label htmlFor="storeName" className="block text-sm font-medium text-gray-700">
+                Store Name
+              </label>
               <input
                 id="storeName"
                 {...register("store.name", {
@@ -161,13 +156,13 @@ function SignupPage() {
                 })}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
-              {errors.store?.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.store.name.message}</p>
-              )}
+              {errors.store?.name && <p className="text-red-500 text-sm mt-1">{errors.store.name.message}</p>}
             </div>
 
             <div>
-              <label htmlFor="storePhone" className="block text-sm font-medium text-gray-700">Store Phone</label>
+              <label htmlFor="storePhone" className="block text-sm font-medium text-gray-700">
+                Store Phone
+              </label>
               <input
                 id="storePhone"
                 {...register("store.phone", {
@@ -179,13 +174,13 @@ function SignupPage() {
                 })}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
-              {errors.store?.phone && (
-                <p className="text-red-500 text-sm mt-1">{errors.store.phone.message}</p>
-              )}
+              {errors.store?.phone && <p className="text-red-500 text-sm mt-1">{errors.store.phone.message}</p>}
             </div>
 
             <div>
-              <label htmlFor="storeTaxId" className="block text-sm font-medium text-gray-700">Store Tax ID</label>
+              <label htmlFor="storeTaxId" className="block text-sm font-medium text-gray-700">
+                Store Tax ID
+              </label>
               <input
                 id="storeTaxId"
                 {...register("store.tax_no", {
@@ -197,13 +192,13 @@ function SignupPage() {
                 })}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
-              {errors.store?.tax_no && (
-                <p className="text-red-500 text-sm mt-1">{errors.store.tax_no.message}</p>
-              )}
+              {errors.store?.tax_no && <p className="text-red-500 text-sm mt-1">{errors.store.tax_no.message}</p>}
             </div>
 
             <div>
-              <label htmlFor="storeBankAccount" className="block text-sm font-medium text-gray-700">Store Bank Account (IBAN)</label>
+              <label htmlFor="storeBankAccount" className="block text-sm font-medium text-gray-700">
+                Store Bank Account (IBAN)
+              </label>
               <input
                 id="storeBankAccount"
                 {...register("store.bank_account", {
@@ -231,9 +226,18 @@ function SignupPage() {
         >
           {isLoading ? (
             <>
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg
+                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
               </svg>
               Signing up...
             </>
@@ -242,8 +246,14 @@ function SignupPage() {
           )}
         </button>
       </form>
+      <div className="mt-4 text-center">
+        <a href="/login" className="text-sm text-indigo-600 hover:text-indigo-500">
+          Already have an account? Log in
+        </a>
+      </div>
     </div>
-  );
+  )
 }
 
-export default SignupPage;
+export default SignupPage
+
