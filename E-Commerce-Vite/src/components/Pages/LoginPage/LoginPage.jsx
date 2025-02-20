@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
 import { useHistory, useLocation } from "react-router-dom"
 
-import { toast } from "react-toastify"
+import { ToastContainer, toast } from 'react-toastify';
 import { loginUser } from "../../store/actions"
 
 
