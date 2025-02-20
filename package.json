@@ -16,5 +16,11 @@
     "url": "https://github.com/OguzAkca/E-commerce-Vite/issues"
   },
   "homepage": "https://github.com/OguzAkca/E-commerce-Vite#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^3.1.0"
+  }
 }
