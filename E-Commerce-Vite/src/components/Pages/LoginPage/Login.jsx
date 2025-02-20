@@ -3,7 +3,7 @@ import 'boxicons'
 import './Login.css'
 import { useHistory } from 'react-router-dom';
 
-function LoginPage() {
+function LoginPage2() {
 
     const history = useHistory();
 

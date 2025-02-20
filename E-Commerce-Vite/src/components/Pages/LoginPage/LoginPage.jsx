@@ -1,65 +1,36 @@
-"use client"
-
-import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { useHistory } from "react-router-dom"
-import axios from "axios"
+import { useDispatch } from "react-redux"
+import { useHistory, useLocation } from "react-router-dom"
 
-// Create Axios instance
-const api = axios.create({
-  baseURL: "https://workintech-fe-ecommerce.onrender.com",
-})
+import { toast } from "react-toastify"
+import { loginUser } from "../../store/actions"
+
 
 function LoginPage() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const dispatch = useDispatch()
   const history = useHistory()
+  const location = useLocation()
+  const { from } = location.state || { from: { pathname: "/" } }
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm()
 
   const onSubmit = async (data) => {
-    setIsLoading(true)
-    setError(null)
-
     try {
-      const response = await api.post("/login", {
-        email: data.email,
-        password: data.password,
-      })
-
-      // Assuming the API returns user data including the name
-      const userData = response.data
-
-      if (data.rememberMe) {
-        localStorage.setItem("user", JSON.stringify(userData))
-      } else {
-        sessionStorage.setItem("user", JSON.stringify(userData))
-      }
-
-      history.push("/")
+      await dispatch(loginUser(data))
+      toast.success("Login successful!")
+      history.replace(from)
     } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        setError(error.response.data.message || "An error occurred during login.")
-      } else {
-        setError("An unexpected error occurred. Please try again.")
-      }
-    } finally {
-      setIsLoading(false)
+      toast.error(error.message || "An error occurred during login.")
     }
   }
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-6">Login</h1>
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-          <span className="block sm:inline">{error}</span>
-        </div>
-      )}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -89,7 +60,6 @@ function LoginPage() {
             type="password"
             {...register("password", {
               required: "Password is required",
-              minLength: { value: 8, message: "Password must be at least 8 characters" },
             })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
@@ -110,31 +80,12 @@ function LoginPage() {
 
         <button
           type="submit"
-          disabled={isLoading}
+          disabled={isSubmitting}
           className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
-            isLoading ? "opacity-50 cursor-not-allowed" : ""
+            isSubmitting ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >
-          {isLoading ? (
-            <>
-              <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-              Logging in...
-            </>
-          ) : (
-            "Login"
-          )}
+          {isSubmitting ? "Logging in..." : "Login"}
         </button>
       </form>
       <div className="mt-4 text-center">

@@ -1,3 +1,34 @@
+import axios from "axios"
+
+const api = axios.create({
+  baseURL: "https://workintech-fe-ecommerce.onrender.com",
+})
+
+export const loginUser = (userData) => async (dispatch) => {
+  try {
+    const response = await api.post("/login", {
+      email: userData.email,
+      password: userData.password,
+    })
+
+    const user = response.data
+
+    dispatch({ type: "SET_USER", payload: user })
+
+    if (userData.rememberMe) {
+      localStorage.setItem("token", user.token)
+    } else {
+      sessionStorage.setItem("token", user.token)
+    }
+
+    return user
+  } catch (error) {
+    throw error.response?.data || error
+  }
+}
+
+
+export const clearUser = () => ({ type: "CLEAR_USER" })
 // Client Actions
 export const setUser = (user) => ({ type: "SET_USER", payload: user })
 export const setRoles = (roles) => ({ type: "SET_ROLES", payload: roles })
@@ -25,7 +56,7 @@ export const fetchRoles = () => async (dispatch, getState) => {
     dispatch(setFetchState("FETCHING"))
     try {
       // Simulating an API call
-      const response = await fetch("https://api.example.com/roles")
+      const response = await fetch("https://workintech-fe-ecommerce.onrender.com/roles")
       const roles = await response.json()
       dispatch(setRoles(roles))
       dispatch(setFetchState("FETCHED"))
