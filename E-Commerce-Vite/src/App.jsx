@@ -1,41 +1,92 @@
+import './App.css';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify'
 
-import './App.css'
-import ShopPage from './components/ShopPage/ShopPage';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+// Page imports
 import HomePage from './components/Pages/HomePage';
-import ProductDetailPage from './components/Pages/ProductDetail/ProductDetailPage';
 import ShopDetailPage from './components/ShopPage/ShopDetailPage';
+import ProductDetailPage from './components/Pages/ProductDetail/ProductDetailPage';
 import ContactUsPage from './components/Pages/ContactUsPage/ContactUsPage';
-
 import SignupPage from './components/Pages/SignUpPage/SignUp';
 import LoginPage from './components/Pages/LoginPage/LoginPage';
+import { isAuthenticated } from './components/Pages/LoginPage/Auth';
 
+// Protected Route Component
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const [isAuth, setIsAuth] = useState(false);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const checkAuth = () => {
+      const auth = isAuthenticated();
+      setIsAuth(auth);
+      setLoading(false);
+    };
 
+    checkAuth();
+    // Check auth status every minute
+    const interval = setInterval(checkAuth, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
-
-function App() {
-  
+  if (loading) {
+    return <div>Loading...</div>; // You can replace this with a proper loading component
+  }
 
   return (
+    <Route
+      {...rest}
+      render={props =>
+        isAuth ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  );
+};
+
+function App() {
+  return (
     <Router>
+       <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Switch>
-        <Route exact path ='/' component={HomePage}/>
-        <Route path='/shop' component={ShopDetailPage}/>
-        <Route path='/about' component={ProductDetailPage}/>
-        <Route path='/contact' component={ContactUsPage}/>
-        <Route path='/login' component={LoginPage}/>
-        <Route path="/signup" component={SignupPage } />
-        <Route path="/register" component={SignupPage } />
+        {/* Public Routes */}
+        <Route exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/signup" component={SignupPage} />
+        <Route path="/register" component={SignupPage} />
+        <Route path="/contact" component={ContactUsPage} />
+
+        {/* Protected Routes */}
+        <PrivateRoute path="/shop" component={ShopDetailPage} />
+        <PrivateRoute path="/about" component={ProductDetailPage} />
         
+        {/* Catch all route - redirect to home */}
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
       </Switch>
     </Router>
-    
-    
   );
-  
-  
 }
 
-export default App
-
+export default App;

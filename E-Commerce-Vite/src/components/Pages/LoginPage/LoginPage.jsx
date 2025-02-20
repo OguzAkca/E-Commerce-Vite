@@ -1,33 +1,52 @@
-import { useForm } from "react-hook-form"
-import { useDispatch } from "react-redux"
-import { useHistory, useLocation } from "react-router-dom"
-
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import { loginUser } from "../../store/actions"
-
+import { loginUser } from "../../store/actions";
+import { setAuthToken, isAuthenticated } from "./Auth";
+import { useEffect } from 'react';
 
 function LoginPage() {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const location = useLocation()
-  const { from } = location.state || { from: { pathname: "/" } }
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
+  const { from } = location.state || { pathname: "/" };
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm()
+  } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      await dispatch(loginUser(data))
-      toast.success("Login successful!")
-      history.replace(from)
+      const response = await dispatch(loginUser(data));
+      
+      if (response && response.token) {
+        setAuthToken(response.token);
+        
+        const userInfo = {
+          name: response.user?.name || 'User',
+          email: response.user?.email || data.email,
+          avatar: response.user?.avatar || null
+        };
+        
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        toast.success("Login successful!");
+        history.replace('/')
+        
+      } else {
+        toast.error("Giriş Yapılamadı")
+        throw new Error("Login failed");
+      }
     } catch (error) {
-      toast.error(error.message || "An error occurred during login.")
+      toast.error(error.message || "An error occurred during login.");
+      setAuthToken(null);
     }
-  }
+  };
 
+
+  // Rest of your component remains the same
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-6">Login</h1>
@@ -93,9 +112,9 @@ function LoginPage() {
           Don't have an account? Sign up
         </a>
       </div>
+      
     </div>
-  )
+  );
 }
 
-export default LoginPage
-
+export default LoginPage;
