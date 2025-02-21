@@ -7,6 +7,11 @@ import Footer from '../layout/Footer'
 import { useHistory } from 'react-router-dom'
 import ProductDetailPage from './ProductDetail/ProductDetailPage'
 import TeamPage from './TeamPage/TeamPage'
+import AboutUsHeader from './AboutUsPage/AboutHeader'
+import AboutSecond from './AboutUsPage/AboutSecond'
+import VideoSection from './AboutUsPage/VideoPart'
+import WorkWithUs from './AboutUsPage/WorkUsPage'
+
 
 function HomePage() {
 
@@ -23,6 +28,10 @@ function HomePage() {
       </div>
       <ShopPage/>
       <ProductDetailPage/>
+      <AboutUsHeader/>
+      <AboutSecond/>
+      <VideoSection/>
+      <WorkWithUs/>
       <TeamPage/>
       
     <Footer/>

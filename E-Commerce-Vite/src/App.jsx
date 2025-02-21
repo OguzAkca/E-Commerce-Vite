@@ -13,6 +13,7 @@ import ContactUsPage from './components/Pages/ContactUsPage/ContactUsPage';
 import SignupPage from './components/Pages/SignUpPage/SignUp';
 import LoginPage from './components/Pages/LoginPage/LoginPage';
 import { isAuthenticated } from './components/Pages/LoginPage/Auth';
+import AboutUsPage from './components/Pages/AboutUsPage/AboutUsPage';
 
 // Protected Route Component
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -86,7 +87,7 @@ function App() {
 
         {/* Protected Routes */}
         <PrivateRoute path="/shop" component={ShopDetailPage} />
-        <PrivateRoute path="/about" component={ProductDetailPage} />
+        <PrivateRoute path="/about" component={AboutUsPage} />
         
         {/* Catch all route - redirect to home */}
         <Route path="*">
