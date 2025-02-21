@@ -6,6 +6,7 @@ import ShopPage from '../ShopPage/ShopPage'
 import Footer from '../layout/Footer'
 import { useHistory } from 'react-router-dom'
 import ProductDetailPage from './ProductDetail/ProductDetailPage'
+import TeamPage from './TeamPage/TeamPage'
 
 function HomePage() {
 
@@ -22,6 +23,7 @@ function HomePage() {
       </div>
       <ShopPage/>
       <ProductDetailPage/>
+      <TeamPage/>
       
     <Footer/>
     
