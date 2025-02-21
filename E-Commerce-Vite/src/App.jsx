@@ -2,7 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify'
-
+import { useDispatch } from 'react-redux';
+import { initializeUserFromStorage } from './components/store/actions';
 
 // Page imports
 import HomePage from './components/Pages/HomePage';
@@ -55,6 +56,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Initialize user data from storage when app loads
+    dispatch(initializeUserFromStorage());
+  }, [dispatch]);
+
   return (
     <Router>
        <ToastContainer

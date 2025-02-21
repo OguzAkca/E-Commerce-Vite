@@ -15,10 +15,13 @@ export const loginUser = (userData) => async (dispatch) => {
 
     dispatch({ type: "SET_USER", payload: user })
 
+    // Store both token and user data
     if (userData.rememberMe) {
       localStorage.setItem("token", user.token)
+      localStorage.setItem("userData", JSON.stringify(user))
     } else {
       sessionStorage.setItem("token", user.token)
+      sessionStorage.setItem("userData", JSON.stringify(user))
     }
 
     return user
@@ -27,8 +30,23 @@ export const loginUser = (userData) => async (dispatch) => {
   }
 }
 
+export const clearUser = () => {
+  // Clear both token and user data
+  localStorage.removeItem("token")
+  localStorage.removeItem("userData")
+  sessionStorage.removeItem("token")
+  sessionStorage.removeItem("userData")
+  return { type: "CLEAR_USER" }
+}
 
-export const clearUser = () => ({ type: "CLEAR_USER" })
+// New action to initialize user from storage
+export const initializeUserFromStorage = () => (dispatch) => {
+  const userData = localStorage.getItem("userData") || sessionStorage.getItem("userData")
+  if (userData) {
+    dispatch({ type: "SET_USER", payload: JSON.parse(userData) })
+  }
+}
+
 // Client Actions
 export const setUser = (user) => ({ type: "SET_USER", payload: user })
 export const setRoles = (roles) => ({ type: "SET_ROLES", payload: roles })
@@ -66,4 +84,3 @@ export const fetchRoles = () => async (dispatch, getState) => {
     }
   }
 }
-
