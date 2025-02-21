@@ -42,9 +42,10 @@ const Header = () => {
   }
 
   const handleSignOut = () => {
-    localStorage.removeItem("token")
-    dispatch(clearUser())
-    history.push("/")
+    dispatch(clearUser()) // This will now clear both localStorage/sessionStorage and Redux state
+    setIsMenuOpen(false) // Close the menu if it's open
+    window.location.reload();
+    history.push("/") // Redirect to home page
   }
 
   const menuItems = [
@@ -246,4 +247,3 @@ const Header = () => {
 }
 
 export default Header
-
