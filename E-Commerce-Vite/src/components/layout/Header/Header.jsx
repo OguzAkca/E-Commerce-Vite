@@ -44,7 +44,7 @@ const Header = () => {
   const handleSignOut = () => {
     dispatch(clearUser()) // This will now clear both localStorage/sessionStorage and Redux state
     setIsMenuOpen(false) // Close the menu if it's open
-    window.location.reload();
+    window.location.reload()
     history.push("/") // Redirect to home page
   }
 
@@ -59,11 +59,23 @@ const Header = () => {
   const shopCategories = [
     {
       title: "Kadın",
-      items: ["Bags", "Belts", "Cosmetic", "Hats"],
+      id: "women",
+      items: [
+        { name: "Bags", id: "bags" },
+        { name: "Belts", id: "belts" },
+        { name: "Cosmetic", id: "cosmetic" },
+        { name: "Hats", id: "hats" },
+      ],
     },
     {
       title: "Erkek",
-      items: ["Bags", "Belts", "Cosmetic", "Hats"],
+      id: "men",
+      items: [
+        { name: "Bags", id: "bags", href: "/manBags" },
+        { name: "Belts", id: "belts" },
+        { name: "Cosmetic", id: "cosmetic" },
+        { name: "Hats", id: "hats" },
+      ],
     },
   ]
 
@@ -129,9 +141,12 @@ const Header = () => {
                             </div>
                             <ul className="space-y-2">
                               {category.items.map((item) => (
-                                <li key={item}>
-                                  <a href="#" className="text-sm text-gray-600 hover:text-gray-900">
-                                    {item}
+                                <li key={item.id}>
+                                  <a
+                                    href={item.href || `/shop/${category.id}/${item.id}/${item.id}`}
+                                    className="text-sm text-gray-600 hover:text-gray-900"
+                                  >
+                                    {item.name}
                                   </a>
                                 </li>
                               ))}
@@ -247,3 +262,4 @@ const Header = () => {
 }
 
 export default Header
+

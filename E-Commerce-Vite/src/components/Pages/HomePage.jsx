@@ -20,23 +20,24 @@ function HomePage() {
 
 
   return (
-    <div className="container">
-      <Header />
-      <Page />
-      <div className="relative z-20">
-        <EditorsPicks />
+    <div className="flex flex-col min-h-screen">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Header />
       </div>
-      <ShopPage/>
-      <ProductDetailPage/>
-      <AboutUsHeader/>
-      <AboutSecond/>
-      <VideoSection/>
-      <WorkWithUs/>
-      <TeamPage/>
-      
-    <Footer/>
-    
-  
+      <main className="flex-grow mt-[80px]">
+        <div className="container mx-auto">
+          <Page />
+          <EditorsPicks />
+          <ShopPage/>
+          <ProductDetailPage/>
+          <AboutUsHeader/>
+          <AboutSecond/>
+          <VideoSection/>
+          <WorkWithUs/>
+          <TeamPage/>
+        </div>
+      </main>
+      <Footer />
     </div>
   )
 }

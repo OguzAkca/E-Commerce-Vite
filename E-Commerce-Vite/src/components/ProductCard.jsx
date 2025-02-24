@@ -13,7 +13,7 @@ export default function ProductCard() {
       <div className="relative">
         <Badge className="absolute top-2 left-2 bg-red-500 text-white">Sale</Badge>
         <img
-          src="/placeholder.svg?height=200&width=400"
+          src="/bestseller/bs-1.jpg"
           alt="Product Image"
           className="w-full h-[150px] sm:h-48 object-cover"
         />

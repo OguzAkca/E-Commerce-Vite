@@ -1,22 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const CategoryCard = ({ title, imageUrl, isLarge = false }) => (
-  <div className={`relative group cursor-pointer overflow-hidden bg-gray-100 ${
-    isLarge ? 'h-full' : 'h-full'
-  }`}>
-    <img 
-      src={imageUrl} 
-      alt={title}
-      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-    />
-    <div className="absolute inset-0 bg-black bg-opacity-10 transition-opacity duration-300 group-hover:bg-opacity-20" />
-    <div className="absolute bottom-[5%] left-[5%]">
-      <button className="bg-white text-xs sm:text-sm py-1.5 sm:py-2 px-4 sm:px-8 font-medium hover:bg-gray-50 transition-colors">
-        {title}
-      </button>
+const CategoryCard = ({ title, imageUrl, isLarge = false, id }) => {
+  const formatPath = (title, id) => {
+    const gender = title.toLowerCase();
+    return `/shop/${gender}/all/${id}`;
+  };
+
+  return (
+    <div className={`relative group cursor-pointer overflow-hidden bg-gray-100 ${
+      isLarge ? 'h-full' : 'h-full'
+    }`}>
+      <img 
+        src={imageUrl} 
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-black bg-opacity-10 transition-opacity duration-300 group-hover:bg-opacity-20" />
+      <div className="absolute bottom-[5%] left-[5%]">
+        <Link 
+          to={formatPath(title, id)}
+          className="bg-white text-xs sm:text-sm py-1.5 sm:py-2 px-4 sm:px-8 font-medium hover:bg-gray-50 transition-colors inline-block"
+        >
+          {title}
+        </Link>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const EditorsPicks = () => {
   const categories = [
@@ -64,6 +75,7 @@ const EditorsPicks = () => {
               title={categories[0].title}
               imageUrl={categories[0].imageUrl}
               isLarge={true}
+              id={categories[0].id}
             />
           </div>
           
@@ -75,6 +87,7 @@ const EditorsPicks = () => {
                   title={category.title}
                   imageUrl={category.imageUrl}
                   isLarge={false}
+                  id={category.id}
                 />
               </div>
             ))}

@@ -14,6 +14,10 @@ import SignupPage from './components/Pages/SignUpPage/SignUp';
 import LoginPage from './components/Pages/LoginPage/LoginPage';
 import { isAuthenticated } from './components/Pages/LoginPage/Auth';
 import AboutUsPage from './components/Pages/AboutUsPage/AboutUsPage';
+import ManPage from './components/Pages/Categories/ManPage';
+import WomanPage from './components/Pages/Categories/WomanPage';
+import AccessoriesPage from './components/Pages/Categories/Accesories';
+import KidsPage from './components/Pages/Categories/KidsPage';
 
 // Protected Route Component
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -85,9 +89,13 @@ function App() {
         <Route path="/register" component={SignupPage} />
         <Route path="/contact" component={ContactUsPage} />
 
-        {/* Protected Routes */}
-        <PrivateRoute path="/shop" component={ShopDetailPage} />
-        <PrivateRoute path="/about" component={AboutUsPage} />
+        {/* Category Routes */}
+        <Route path="/shop/men/:categoryName/:categoryId" component={ManPage} />
+        <Route path="/shop/women/:categoryName/:categoryId" component={WomanPage} />
+        <Route path="/shop/accessories/:categoryName/:categoryId" component={AccessoriesPage} />
+        <Route path="/shop/kids/:categoryName/:categoryId" component={KidsPage} />
+        <Route path="/shop" component={ShopDetailPage} />
+        <Route path="/about" component={AboutUsPage} />
         
         {/* Catch all route - redirect to home */}
         <Route path="*">
