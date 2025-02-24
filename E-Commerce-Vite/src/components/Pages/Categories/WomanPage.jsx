@@ -6,7 +6,7 @@ import Header from '../../layout/Header/Header';
 function WomanPage() {
     const { categoryName, categoryId } = useParams();
 
-    const kidsProducts = [
+    const womanProducts = [
         {
           id: 1,
           title: "Woman's Pants",
@@ -83,7 +83,7 @@ function WomanPage() {
             <h1 className="text-3xl font-bold mb-6">Women's {categoryName}</h1>
             {/* Add your women's category content here */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {kidsProducts.map((product) => (
+              {womanProducts.map((product) => (
                 <PCard    
                   key={product.id}
                   title={product.title}
