@@ -5,7 +5,8 @@ export const products = [
       subtitle: "English Department",
       price: "54.51",
       imageUrl: "/ShopCovers/cover-1.png",
-      colors: ['#FFD700', '#FF69B4', '#4169E1', '#32CD32']
+      colors: ['#FFD700', '#FF69B4', '#4169E1', '#32CD32'],
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       id: 2,
@@ -13,7 +14,8 @@ export const products = [
       subtitle: "English Department",
       price: "34.21",
       imageUrl: "/ShopCovers/cover-2.png",
-      colors: ['#87CEEB', '#DDA0DD', '#F0E68C']
+      colors: ['#87CEEB', '#DDA0DD', '#F0E68C'],
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       id: 3,
@@ -21,7 +23,8 @@ export const products = [
       subtitle: "English Department",
       price: "49.99",
       imageUrl: "/ShopCovers/cover-3.png",
-      colors: ['#98FB98', '#DEB887', '#BA55D3']
+      colors: ['#98FB98', '#DEB887', '#BA55D3'],
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       id: 4,
@@ -29,7 +32,8 @@ export const products = [
       subtitle: "English Department",
       price: "45.51",
       imageUrl: "/ShopCovers/cover-4.png",
-      colors: ['#FF6347', '#20B2AA', '#DAA520', '#FF69B4']
+      colors: ['#FF6347', '#20B2AA', '#DAA520', '#FF69B4'],
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       id: 5,
@@ -37,7 +41,8 @@ export const products = [
       subtitle: "English Department",
       price: "65.99",
       imageUrl: "/ShopCovers/cover-5.png",
-      colors: ['#FF4500', '#4682B4', '#32CD32', '#FFD700']
+      colors: ['#FF4500', '#4682B4', '#32CD32', '#FFD700'],
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       id: 6,
@@ -45,7 +50,8 @@ export const products = [
       subtitle: "English Department",
       price: "58.48",
       imageUrl: "/ShopCovers/cover-6.png",
-      colors: ['#FF69B4', '#4169E1', '#32CD32', '#FFD700']
+      colors: ['#FF69B4', '#4169E1', '#32CD32', '#FFD700'],
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."  
     },
     {
       id: 7,
@@ -53,7 +59,8 @@ export const products = [
       subtitle: "English Department",
       price: "44.99",
       imageUrl: "/ShopCovers/cover-7.png",
-      colors: ['#DDA0DD', '#F0E68C', '#98FB98']
+      colors: ['#DDA0DD', '#F0E68C', '#98FB98'],
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
       id: 8,
@@ -61,7 +68,8 @@ export const products = [
       subtitle: "English Department",
       price: "62.51",
       imageUrl: "/ShopCovers/cover-8.png",
-      colors: ['#FF6347', '#4682B4', '#FFD700', '#32CD32']
+      colors: ['#FF6347', '#4682B4', '#FFD700', '#32CD32'],
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         id: 9,
@@ -69,7 +77,8 @@ export const products = [
         subtitle: "English Department",
         price: "54.51",
         imageUrl: "/ShopCovers/cover-1.png",
-        colors: ['#FFD700', '#FF69B4', '#4169E1', '#32CD32']
+        colors: ['#FFD700', '#FF69B4', '#4169E1', '#32CD32'],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
         id: 10,
@@ -77,7 +86,8 @@ export const products = [
         subtitle: "English Department",
         price: "34.21",
         imageUrl: "/ShopCovers/cover-2.png",
-        colors: ['#87CEEB', '#DDA0DD', '#F0E68C']
+        colors: ['#87CEEB', '#DDA0DD', '#F0E68C'],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
         id: 11,
@@ -85,7 +95,8 @@ export const products = [
         subtitle: "English Department",
         price: "49.99",
         imageUrl: "/ShopCovers/cover-3.png",
-        colors: ['#98FB98', '#DEB887', '#BA55D3']
+        colors: ['#98FB98', '#DEB887', '#BA55D3'],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
         id: 12,
@@ -93,7 +104,8 @@ export const products = [
         subtitle: "English Department",
         price: "45.51",
         imageUrl: "/ShopCovers/cover-4.png",
-        colors: ['#FF6347', '#20B2AA', '#DAA520', '#FF69B4']
+        colors: ['#FF6347', '#20B2AA', '#DAA520', '#FF69B4'],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
   ];
 
@@ -171,7 +183,9 @@ export const kidsProducts = [
       subtitle: "Pants",
       price: "24.51",
       imageUrl: "/resimler/kid-card.png",
-      colors: ['#FFD700', '#FF69B4', '#4169E1', '#32CD32']
+      colors: ['#FFD700', '#FF69B4', '#4169E1', '#32CD32'],
+      content:"Çocukların cildine zarar vermeyecek pamuklu ürün",
+      items:"Çok iyi itemlerim var."
     },
     {
       id: 2,
@@ -179,7 +193,9 @@ export const kidsProducts = [
       subtitle: "Shirts",
       price: "34.21",
       imageUrl: "/resimler/kid-card.png",
-      colors: ['#87CEEB', '#DDA0DD', '#F0E68C']
+      colors: ['#87CEEB', '#DDA0DD', '#F0E68C'],
+      content:"Çocukların cildine zarar vermeyecek pamuklu ürün",
+      items:"Çok iyi itemlerim var."
     },
     {
       id: 3,
@@ -187,7 +203,9 @@ export const kidsProducts = [
       subtitle: "Pants",
       price: "49.99",
       imageUrl: "/resimler/kid-card.png",
-      colors: ['#98FB98', '#DEB887', '#BA55D3']
+      colors: ['#98FB98', '#DEB887', '#BA55D3'],
+      content:"Çocukların cildine zarar vermeyecek pamuklu ürün",
+      items:"Çok iyi itemlerim var."
     },
     {
       id: 4,
@@ -195,7 +213,9 @@ export const kidsProducts = [
       subtitle: "Shirts",
       price: "45.51",
       imageUrl: "/resimler/kid-card.png",
-      colors: ['#FF6347', '#20B2AA', '#DAA520', '#FF69B4']
+      colors: ['#FF6347', '#20B2AA', '#DAA520', '#FF69B4'],
+      content:"Çocukların cildine zarar vermeyecek pamuklu ürün",
+      items:"Çok iyi itemlerim var."
     },
     {
       id: 5,
@@ -203,7 +223,9 @@ export const kidsProducts = [
       subtitle: "Pants",
       price: "65.99",
       imageUrl: "/resimler/kid-card.png",
-      colors: ['#FF4500', '#4682B4', '#32CD32', '#FFD700']
+      colors: ['#FF4500', '#4682B4', '#32CD32', '#FFD700'],
+      content:"Çocukların cildine zarar vermeyecek pamuklu ürün",
+      items:"Çok iyi itemlerim var."
     },
     {
       id: 6,
@@ -211,7 +233,9 @@ export const kidsProducts = [
       subtitle: "Shirts",
       price: "58.48",
       imageUrl: "/resimler/kid-card.png",
-      colors: ['#FF69B4', '#4169E1', '#32CD32', '#FFD700']
+      colors: ['#FF69B4', '#4169E1', '#32CD32', '#FFD700'],
+      content:"Çocukların cildine zarar vermeyecek pamuklu ürün",
+      items:"Çok iyi itemlerim var."
     },
     {
       id: 7,
@@ -219,7 +243,9 @@ export const kidsProducts = [
       subtitle: "Pants",
       price: "44.99",
       imageUrl: "/resimler/kid-card.png",
-      colors: ['#DDA0DD', '#F0E68C', '#98FB98']
+      colors: ['#DDA0DD', '#F0E68C', '#98FB98'],
+      content:"Çocukların cildine zarar vermeyecek pamuklu ürün",
+      items:"Çok iyi itemlerim var."
     },
     {
       id: 8,    
@@ -227,7 +253,9 @@ export const kidsProducts = [
       subtitle: "Shirts",
       price: "62.51",
       imageUrl: "/resimler/kid-card.png",
-      colors: ['#FF6347', '#4682B4', '#FFD700', '#32CD32']
+      colors: ['#FF6347', '#4682B4', '#FFD700', '#32CD32'],
+      content:"Çocukların cildine zarar vermeyecek pamuklu ürün",
+      items:"Çok iyi itemlerim var."
     },
 ];
 
