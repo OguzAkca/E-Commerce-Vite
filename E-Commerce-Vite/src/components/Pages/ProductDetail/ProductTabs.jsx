@@ -1,7 +1,7 @@
 import React from 'react';
-import { products } from '../../../Data';
+import { kidsProducts, products } from '../../../Data';
 
-const ProductTabs = ({title, price, imageUrl}) => {
+const ProductTabs = () => {
   const [activeTab, setActiveTab] = React.useState('description');
 
   const tabs = [
@@ -66,10 +66,10 @@ const ProductTabs = ({title, price, imageUrl}) => {
           <div className="relative w-full aspect-square max-w-md">
             <img
               src={products[3].imageUrl}
-              alt={title}
+              alt={kidsProducts[0].title}
               className="w-full h-full object-cover rounded-lg shadow-xl bg-white"
             />
-            <p className="text-sm text-gray-600">${price}</p>
+            <p className="text-sm text-gray-600">${kidsProducts.price}</p>
           </div>
         </div>
 

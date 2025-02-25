@@ -8,16 +8,18 @@ import { initializeUserFromStorage } from './components/store/actions';
 // Page imports
 import HomePage from './components/Pages/HomePage';
 import ShopDetailPage from './components/ShopPage/ShopDetailPage';
-import ProductDetailPage from './components/Pages/ProductDetail/ProductDetailPage';
 import ContactUsPage from './components/Pages/ContactUsPage/ContactUsPage';
 import SignupPage from './components/Pages/SignUpPage/SignUp';
 import LoginPage from './components/Pages/LoginPage/LoginPage';
 import { isAuthenticated } from './components/Pages/LoginPage/Auth';
 import AboutUsPage from './components/Pages/AboutUsPage/AboutUsPage';
-import ManPage from './components/Pages/Categories/ManPage';
-import WomanPage from './components/Pages/Categories/WomanPage';
-import AccessoriesPage from './components/Pages/Categories/Accesories';
-import KidsPage from './components/Pages/Categories/KidsPage';
+
+
+import ManPage from './components/Pages/Categories/ManPage/ManPage';
+import WomanPage from './components/Pages/Categories/WomanPage/WomanPage';
+import AccessoriesPage from './components/Pages/Categories/Accesories/Accesories';
+import KidsPage from './components/Pages/Categories/KidsPage/KidsPage';
+import KidsProductDetail from './components/Pages/Categories/KidsPage/KidsProductDetail';
 
 // Protected Route Component
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -92,7 +94,8 @@ function App() {
         {/* Category Routes */}
         <Route path="/shop/men/:categoryName/:categoryId" component={ManPage} />
         <Route path="/shop/women/:categoryName/:categoryId" component={WomanPage} />
-        <Route path="/shop/accessories/:categoryName/:categoryId" component={AccessoriesPage} />
+        <Route path="/shop/accessories/:categoryName/:categoryId" component={AccessoriesPage  } />
+        <Route path="/shop/kids/:categoryName/id/:id" component={KidsProductDetail} />
         <Route path="/shop/kids/:categoryName/:categoryId" component={KidsPage} />
         <Route path="/shop" component={ShopDetailPage} />
         <Route path="/about" component={AboutUsPage} />
