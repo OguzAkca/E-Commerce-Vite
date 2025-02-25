@@ -1,6 +1,7 @@
 import React from 'react';
+import { products } from '../../../Data';
 
-const ProductTabs = () => {
+const ProductTabs = ({title, price, imageUrl}) => {
   const [activeTab, setActiveTab] = React.useState('description');
 
   const tabs = [
@@ -11,7 +12,7 @@ const ProductTabs = () => {
 
   const accordionItems = [
     {
-      title: 'the quick fox jumps over',
+     
       content: [
         'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
         'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
@@ -19,7 +20,7 @@ const ProductTabs = () => {
       ]
     },
     {
-      title: 'the quick fox jumps over',
+     
       items: [
         'the quick fox jumps over the lazy dog',
         'the quick fox jumps over the lazy dog',
@@ -28,7 +29,7 @@ const ProductTabs = () => {
       ]
     },
     {
-      title: 'the quick fox jumps over',
+     
       items: [
         'the quick fox jumps over the lazy dog',
         'the quick fox jumps over the lazy dog',
@@ -64,10 +65,11 @@ const ProductTabs = () => {
         <div className="hidden md:block bg-gray-100 rounded-lg p-8 flex items-center justify-center h-full">
           <div className="relative w-full aspect-square max-w-md">
             <img
-              src="/resimler/pembe.jpg"
-              alt="Product details"
+              src={products[3].imageUrl}
+              alt={title}
               className="w-full h-full object-cover rounded-lg shadow-xl bg-white"
             />
+            <p className="text-sm text-gray-600">${price}</p>
           </div>
         </div>
 

@@ -1,9 +1,10 @@
 import { Clock, Users, Bookmark } from "lucide-react"
 import Badge from "./Badge"
 import Button from "./Button"
+import { products } from "../Data";
 
 
-export default function ProductCard() {
+function ProductCard() {
   return (
     <div
       className="bg-white rounded-xl shadow-sm overflow-hidden mx-auto
@@ -13,7 +14,7 @@ export default function ProductCard() {
       <div className="relative">
         <Badge className="absolute top-2 left-2 bg-red-500 text-white">Sale</Badge>
         <img
-          src="/bestseller/bs-1.jpg"
+          src={products[2].imageUrl}
           alt="Product Image"
           className="w-full h-[150px] sm:h-48 object-cover"
         />
@@ -59,3 +60,5 @@ export default function ProductCard() {
     </div>
   )
 }
+
+export default ProductCard;

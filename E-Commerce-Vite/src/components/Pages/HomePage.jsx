@@ -11,6 +11,7 @@ import AboutUsHeader from './AboutUsPage/AboutHeader'
 import AboutSecond from './AboutUsPage/AboutSecond'
 import VideoSection from './AboutUsPage/VideoPart'
 import WorkWithUs from './AboutUsPage/WorkUsPage'
+import ProductCard from '../ProductCard'
 
 
 function HomePage() {
@@ -35,6 +36,7 @@ function HomePage() {
           <VideoSection/>
           <WorkWithUs/>
           <TeamPage/>
+          <ProductCard/>
         </div>
       </main>
       <Footer />
