@@ -13,11 +13,12 @@ function ShopDetailPage() {
         <Header />
       </div>
       <main className="flex-grow mt-[80px]">
+        
         <div className="container mx-auto">
           <ShopHeader />
-          <div className="flex flex-col lg:flex-row gap-6 p-4">
+          <div >
             <ShopCards />
-            <Pagination />
+          
             <CompanyLogos />
           </div>
         </div>
