@@ -15,17 +15,16 @@ const SearchPage = () => {
     category: "all",
     priceRange: "all",
   })
-  const location = useLocation()
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search)
-    const queryParam = searchParams.get("q")
+    const urlParams = new URLSearchParams(window.location.search)
+    const queryParam = urlParams.get("q")
 
     if (queryParam) {
       setSearchQuery(queryParam)
       performSearch(queryParam)
     }
-  }, [location])
+  }, [])
 
   const performSearch = (query) => {
     setIsLoading(true)
@@ -178,7 +177,7 @@ const SearchPage = () => {
                     key={product.id}
                     className="bg-white rounded-lg shadow overflow-hidden hover:shadow-md transition-shadow"
                   >
-                    <Link to={`/product/${product.id}`}>
+                    <a href={`/product/${product.id}`}>
                       <img
                         src={product.imageUrl || "/placeholder.svg"}
                         alt={product.title}
@@ -189,7 +188,7 @@ const SearchPage = () => {
                         <p className="text-sm text-gray-500 mb-2">{product.subtitle}</p>
                         <p className="font-bold text-blue-600">${product.price}</p>
                       </div>
-                    </Link>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -219,3 +218,4 @@ const SearchPage = () => {
 }
 
 export default SearchPage
+
