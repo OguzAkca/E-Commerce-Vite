@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../store/actions';
+import { products } from '../../Data';
 
-const ProductCard = ({ title, price, imageUrl, colors }) => (
+const ProductCard = ({ title, price, imageUrl, colors, subtitle, description }) => (
   <div className="group cursor-pointer bg-white rounded-lg overflow-hidden">
     <div className="relative overflow-hidden">
       <img 
@@ -12,7 +13,8 @@ const ProductCard = ({ title, price, imageUrl, colors }) => (
       />
     </div>
     <div className="p-4 space-y-2">
-      <h3 className="text-sm font-medium text-gray-700">{title} </h3>
+      <h3 className="text-sm font-medium text-gray-700">{title}</h3>
+      <p className="text-xs text-gray-500">{subtitle}</p>
       <p className="text-sm text-gray-600">${price}</p>
       <div className="flex gap-1">
         {colors.map((color, index) => (
@@ -28,110 +30,84 @@ const ProductCard = ({ title, price, imageUrl, colors }) => (
 );
 
 const ShopPage = () => {
-  const products = [
-    {
-      id: 1,
-      title: "Graphic Designatata",
-      subtitle: "English Department",
-      price: "54.51",
-      imageUrl: "/ShopCovers/cover-1.png",
-      colors: ['#FFD700', '#FF69B4', '#4169E1', '#32CD32']
-    },
-    {
-      id: 2,
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "34.21",
-      imageUrl: "/ShopCovers/cover-2.png",
-      colors: ['#87CEEB', '#DDA0DD', '#F0E68C']
-    },
-    {
-      id: 3,
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "49.99",
-      imageUrl: "/ShopCovers/cover-3.png",
-      colors: ['#98FB98', '#DEB887', '#BA55D3']
-    },
-    {
-      id: 4,
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "45.51",
-      imageUrl: "/ShopCovers/cover-4.png",
-      colors: ['#FF6347', '#20B2AA', '#DAA520', '#FF69B4']
-    },
-    {
-      id: 5,
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "65.99",
-      imageUrl: "/ShopCovers/cover-5.png",
-      colors: ['#FF4500', '#4682B4', '#32CD32', '#FFD700']
-    },
-    {
-      id: 6,
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "58.48",
-      imageUrl: "/ShopCovers/cover-6.png",
-      colors: ['#FF69B4', '#4169E1', '#32CD32', '#FFD700']
-    },
-    {
-      id: 7,
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "44.99",
-      imageUrl: "/ShopCovers/cover-7.png",
-      colors: ['#DDA0DD', '#F0E68C', '#98FB98']
-    },
-    {
-      id: 8,
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "62.51",
-      imageUrl: "/ShopCovers/cover-8.png",
-      colors: ['#FF6347', '#4682B4', '#FFD700', '#32CD32']
-    },
-  ];
-
   const dispatch = useDispatch();
-  const {productList, fetchState} = useSelector((state) => state.product);
+  const { productList, fetchState } = useSelector((state) => state.product);
+  
+  // State for the filtered/sorted products
+  const [displayedProducts, setDisplayedProducts] = useState(products);
+  // State for the current filter option
+  const [filterOption, setFilterOption] = useState('popularity');
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  // Apply filtering/sorting whenever filterOption changes
+  useEffect(() => {
+    let sortedProducts = [...products];
+    
+    switch(filterOption) {
+      case 'price-low-high':
+        sortedProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        break;
+      case 'price-high-low':
+        sortedProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        break;
+      case 'newest':
+        // Assuming newest would be sorted by id in descending order
+        sortedProducts.sort((a, b) => b.id - a.id);
+        break;
+      case 'popularity':
+      default:
+        // Keep the default order for popularity
+        break;
+    }
+    
+    setDisplayedProducts(sortedProducts);
+  }, [filterOption]);
+
+  // Handler for filter changes
+  const handleFilterChange = (option) => {
+    setFilterOption(option);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Pass the filterOption and handler to ShopHeader */}
+      <ShopHeader 
+        filterOption={filterOption} 
+        onFilterChange={handleFilterChange} 
+      />
+      
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8 text-center">
           <h2 className="text-xl text-black font-semibold mb-2">Featured Products</h2>
           <h1 className="text-3xl text-black font-bold mb-4">BESTSELLER PRODUCTS</h1>
           <p className="text-gray-600">Problems trying to resolve the conflict between</p>
-          {fetchState === "LOADING" && <p>Loading...</p>} {/* Spinner burada gösterilecek */}
-      {fetchState === "FETCHED" && (
-        <div className="product-list">
-          {productList.map((product) => (
-            <div key={product.id} className="product-card">
-              <h3>{product.title}</h3>
-              <p>{product.price} $</p>
+          {fetchState === "LOADING" && <p>Loading...</p>}
+          {fetchState === "FETCHED" && (
+            <div className="product-list">
+              {productList.map((product) => (
+                <div key={product.id} className="product-card">
+                  <h3>{product.title}</h3>
+                  <p>{product.price} $</p>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
+          {fetchState === "ERROR" && <p>Failed to load products.</p>}
         </div>
-      )}
-      {fetchState === "ERROR" && <p>Failed to load products.</p>}
-        </div>
-        
         
         <div className="grid text-black grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
+          {displayedProducts.map((product) => (
             <ProductCard
               key={product.id}
               title={product.title}
+              subtitle={product.subtitle}
               price={product.price}
               imageUrl={product.imageUrl}
               colors={product.colors}
+              description={product.description}
             />
           ))}
         </div>
