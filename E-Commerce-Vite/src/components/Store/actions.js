@@ -4,6 +4,21 @@ const api = axios.create({
   baseURL: "https://workintech-fe-ecommerce.onrender.com",
 })
 
+export const fetchProducts = () => async (dispatch) => {
+  dispatch({ type: "SET_FETCH_STATE", payload: "LOADING" }); // Spinner için
+
+  try {
+    const response = await api.get("/products");
+
+    dispatch({ type: "SET_PRODUCT_LIST", payload: response.data.products });
+    dispatch({ type: "SET_TOTAL", payload: response.data.total });
+    dispatch({ type: "SET_FETCH_STATE", payload: "FETCHED" }); // Spinner kapatmak için
+  } catch (error) {
+    dispatch({ type: "SET_FETCH_STATE", payload: "ERROR" });
+    console.error("Error fetching products:", error);
+  }
+};
+
 export const loginUser = (userData) => async (dispatch) => {
   try {
     const response = await api.post("/login", {

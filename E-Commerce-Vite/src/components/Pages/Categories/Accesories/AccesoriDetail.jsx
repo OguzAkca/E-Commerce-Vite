@@ -10,8 +10,9 @@ const AccesorieDetail = () => {
   const [reviews, setReviews] = useState([])
   const [expandedInfo, setExpandedInfo] = useState(null)
 
-  const { id } = useParams()
-  const productId = id.replace("id:", "")
+  
+  const { id } = useParams();
+  const productId = id.replace('id:', '');
 
   const product = accessories.find((p) => p.id === Number.parseInt(productId))
   const userInfo = getUserInfo()

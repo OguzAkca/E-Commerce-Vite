@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../store/actions';
 
 const ProductCard = ({ title, price, imageUrl, colors }) => (
   <div className="group cursor-pointer bg-white rounded-lg overflow-hidden">
@@ -93,6 +95,13 @@ const ShopPage = () => {
     },
   ];
 
+  const dispatch = useDispatch();
+  const {productList, fetchState} = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
@@ -100,7 +109,20 @@ const ShopPage = () => {
           <h2 className="text-xl text-black font-semibold mb-2">Featured Products</h2>
           <h1 className="text-3xl text-black font-bold mb-4">BESTSELLER PRODUCTS</h1>
           <p className="text-gray-600">Problems trying to resolve the conflict between</p>
+          {fetchState === "LOADING" && <p>Loading...</p>} {/* Spinner burada gösterilecek */}
+      {fetchState === "FETCHED" && (
+        <div className="product-list">
+          {productList.map((product) => (
+            <div key={product.id} className="product-card">
+              <h3>{product.title}</h3>
+              <p>{product.price} $</p>
+            </div>
+          ))}
         </div>
+      )}
+      {fetchState === "ERROR" && <p>Failed to load products.</p>}
+        </div>
+        
         
         <div className="grid text-black grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (

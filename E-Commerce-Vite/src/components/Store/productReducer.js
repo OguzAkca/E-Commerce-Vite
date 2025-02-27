@@ -29,6 +29,7 @@ const initialState = {
     }
   }
   
-  export default productReducer
+  export default productReducer;
+
   
   

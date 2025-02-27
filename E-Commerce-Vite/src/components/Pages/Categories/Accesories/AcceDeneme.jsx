@@ -2,15 +2,16 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import Header from '../../../layout/Header/Header'
 import Footer from '../../../layout/Footer'
-import { kidsProducts } from '../../../../Data'
+import { accessories } from '../../../../Data'
+import AccesorieDetail from './AccesoriDetail'
 
-import KidDeneme from './KidsDeneme'
 
-function KidsProductDetail() {
+
+function AcceDetail() {
   const { id } = useParams();
   const productId = id.replace('id:', '');
   
-  const product = kidsProducts.find(p => p.id === parseInt(productId));
+  const product = accessories.find(p => p.id === parseInt(productId));
 
   if (!product) {
     return (
@@ -38,7 +39,7 @@ function KidsProductDetail() {
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="md:flex">   
              
-            <KidDeneme />
+            <AccesorieDetail />
             </div>
           </div>
         </div>
@@ -49,4 +50,4 @@ function KidsProductDetail() {
   )
 }
 
-export default KidsProductDetail
+export default AcceDetail
