@@ -112,6 +112,7 @@ export const products = [
 export const accessories = [
     {
       id: 1,
+      urlName: 'accesories',
       title: "Neckless",
       subtitle: "Neckless",
       price: "24.51",
@@ -120,6 +121,7 @@ export const accessories = [
     },
     {
       id: 2,
+      urlName: 'accesories',
       title: "Earring",
       subtitle: "Woman Earring",
       price: "34.21",
@@ -128,6 +130,7 @@ export const accessories = [
     },
     {
       id: 3,
+      urlName: 'accesories',
       title: "Neckless",
       subtitle: "Neckless",
       price: "49.99",
@@ -136,6 +139,7 @@ export const accessories = [
     },
     {
       id: 4,
+      urlName: 'accesories',
       title: "Earring",
       subtitle: "Woman Earring",
       price: "45.51",
@@ -144,6 +148,7 @@ export const accessories = [
     },
     {
       id: 5,
+      urlName: 'accesories',
       title: "Neckless",
       subtitle: "Neckless",
       price: "65.99",
@@ -152,6 +157,7 @@ export const accessories = [
     },
     {
       id: 6,
+      urlName: 'accesories',
       title: "Earring",
       subtitle: "Woman Earring",
       price: "58.48",
@@ -160,6 +166,7 @@ export const accessories = [
     },
     {
       id: 7,
+      urlName: 'accesories',
       title: "Neckless",
       subtitle: "Neckless",
       price: "44.99",
@@ -168,6 +175,7 @@ export const accessories = [
     },
     {
       id: 8,    
+      urlName: 'accesories',
       title: "Earring",
       subtitle: "Woman Earring",
       price: "62.51",

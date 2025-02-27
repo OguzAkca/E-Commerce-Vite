@@ -4,11 +4,11 @@ import Header from "../../../layout/Header/Header"
 import Footer from "../../../layout/Footer"
 import { accessories } from "../../../../Data"
 
-const ProductCardAccessories = ({ title, price, imageUrl, colors, categoryName, id }) => {
+const ProductCardAccessories = ({ title, price, imageUrl, colors, categoryName, id, urlName }) => {
   const history = useHistory()
 
   const handleProductClick = () => {
-    history.push(`/shop/accessories/${categoryName}/id/${id}`)
+    history.push(`/shop/${urlName}/${categoryName}/id/${id}`)
   }
 
   return (
