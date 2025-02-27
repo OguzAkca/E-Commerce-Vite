@@ -23,6 +23,7 @@ import KidsProductDetail from './components/Pages/Categories/KidsPage/KidsProduc
 
 import AcceDetail from './components/Pages/Categories/Accesories/AcceDeneme';
 import WomanProductDetail from './components/Pages/Categories/WomanPage/WomanDetComp';
+import ManProductDetail from './components/Pages/Categories/ManPage/ManDetailPage';
 
 // Protected Route Component
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -95,6 +96,7 @@ function App() {
         <Route path="/contact" component={ContactUsPage} />
 
         {/* Category Routes */}
+        <Route path="/shop/men/:categoryName/id/:id" component={ManProductDetail} />
         <Route path="/shop/men/:categoryName/:categoryId" component={ManPage} />
         <Route path="/shop/women/:categoryName/id/:id" component={WomanProductDetail} />
         <Route path="/shop/women/:categoryName/:categoryId" component={WomanPage} />
