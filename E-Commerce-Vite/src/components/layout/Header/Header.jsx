@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Menu, X, Search, ShoppingCart, User, Heart, LogOut } from "lucide-react"
+import { Menu, X, ShoppingCart, User, Heart, LogOut } from "lucide-react"
 import NotificationBar from "./topSide"
 import { useHistory } from "react-router-dom"
-import { setUser, clearUser } from "../../store/actions" // We'll create these actions
+import { setUser, clearUser } from "../../store/actions"
+import SearchComponent from "../../Search/SearchComponent"
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -78,15 +80,6 @@ const Header = () => {
       ],
     },
   ]
-
-  const slides = [{ url: "/resimler/ceket.jpg" }, { url: "/resimler/ceket2.jpg" }]
-
-  const containerStyles = {
-    width: "500px",
-    height: "280px",
-    margin: "0 auto",
-    marginTop: "10px",
-  }
 
   const getGravatarUrl = (email) => {
     const hash = btoa(email.toLowerCase().trim())
@@ -185,9 +178,8 @@ const Header = () => {
                   </a>
                 </div>
               )}
-              <button className="focus:outline-none">
-                <Search className="w-5 h-5 text-gray-600" />
-              </button>
+              {/* Replace the search button with our new SearchComponent */}
+              <SearchComponent />
               <button className="flex items-center focus:outline-none">
                 <ShoppingCart className="w-5 h-5 text-gray-600" />
                 <span className="ml-1 text-xs">1</span>
@@ -209,7 +201,8 @@ const Header = () => {
               ) : (
                 <User className="w-6 h-6" />
               )}
-              <Search className="w-6 h-6" />
+              {/* Mobile search component */}
+              <SearchComponent />
               <ShoppingCart className="w-6 h-6" />
               <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="focus:outline-none">
                 {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
