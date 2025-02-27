@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../store/actions';
 import { products } from '../../Data';
+import ShopHeader from './ShopHeader';
 
 const ProductCard = ({ title, price, imageUrl, colors, subtitle, description }) => (
   <div className="group cursor-pointer bg-white rounded-lg overflow-hidden">
