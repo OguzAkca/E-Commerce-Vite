@@ -83,6 +83,7 @@ const AccesorieDetail = () => {
       {/* Tabs Navigation */}
       <div className="border-b mb-4 md:mb-6">
         
+        
         <div className="flex gap-4 md:gap-8 px-4 md:px-0 justify-center">
           {tabs.map((tab) => (
             <button
@@ -95,19 +96,23 @@ const AccesorieDetail = () => {
               {tab.label}
             </button>
           ))}
+          
         </div>
       </div>
 
       {/* Tab Content */}
       <div className="grid md:grid-cols-2 gap-8">
+      
         {/* Image - Only visible on desktop */}
         <div className="hidden md:block bg-gray-100 rounded-lg p-8 flex items-center justify-center h-full">
+          
           <div className="relative w-full aspect-square max-w-md">
             <img
               src={product?.imageUrl || "/resimler/pembe.jpg"}
               alt={product?.title || "Product Image"}
               className="w-full h-full object-cover rounded-lg shadow-xl bg-white"
             />
+            <button className="">Geri</button>
             {activeTab === "description" && (
               <div className="absolute top-0 right-0 bg-white py-1 px-3 rounded-bl-lg rounded-tr-lg shadow">
                 <span className="text-sm font-medium">100% Cotton</span>

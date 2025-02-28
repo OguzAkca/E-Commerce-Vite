@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { kidsProducts } from "../../../../Data"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { getUserInfo, isAuthenticated } from "../../LoginPage/Auth"
 
 const KidDeneme = () => {
@@ -16,6 +16,7 @@ const KidDeneme = () => {
 
   const product = kidsProducts.find((p) => p.id === Number.parseInt(productId))
   const userInfo = getUserInfo()
+  const history = useHistory()
 
   // Load reviews from localStorage on component mount
   useEffect(() => {
@@ -103,6 +104,12 @@ const KidDeneme = () => {
         {/* Image - Only visible on desktop */}
         <div className="hidden md:block bg-gray-100 rounded-lg p-8 flex items-center justify-center h-full">
           <div className="relative w-full aspect-square max-w-md">
+          <button
+              className="absolute top-2 left-2 bg-white text-gray-700 px-2 py-1 text-xs 
+             sm:px-3 sm:py-2 sm:text-sm 
+             md:px-4 md:py-2 md:text-base 
+             rounded-lg shadow-md hover:bg-gray-200 transition"
+              onClick={() => history.goBack()}>← Geri</button>
             <img
               src={product?.imageUrl || "/resimler/pembe.jpg"}
               alt={product?.title || "Product Image"}

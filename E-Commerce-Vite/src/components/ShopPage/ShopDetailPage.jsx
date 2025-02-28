@@ -1,7 +1,7 @@
 import React from 'react'
 import ShopHeader from './ShopHeader'
 import ShopCards from './ShopCards'
-import Pagination from './NextCardBtn'
+
 import CompanyLogos from '../Markalar'
 import Footer from '../layout/Footer'
 import Header from '../layout/Header/Header'

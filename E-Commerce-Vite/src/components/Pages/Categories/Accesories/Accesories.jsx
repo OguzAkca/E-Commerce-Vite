@@ -8,7 +8,7 @@ const ProductCardAccessories = ({ title, price, imageUrl, colors, categoryName, 
   const history = useHistory()
 
   const handleProductClick = () => {
-    history.push(`/shop/${urlName}/${categoryName}/id/${id}`)
+    history.push(`/shop/accesories/${categoryName}/id/${id}`)
   }
 
   return (

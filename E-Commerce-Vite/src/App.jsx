@@ -102,7 +102,6 @@ function App() {
         <Route path="/shop/women/:categoryName/:categoryId" component={WomanPage} />
         <Route path="/shop/accessories/:categoryName/id/:id" component={AcceDetail} />
         <Route path="/shop/accessories/:categoryName/:categoryId" component={AccessoriesPage  } />
-        
         <Route path="/shop/kids/:categoryName/id/:id" component={KidsProductDetail} />
         <Route path="/shop/kids/:categoryName/:categoryId" component={KidsPage} />
         
